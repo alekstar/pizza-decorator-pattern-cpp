@@ -8,15 +8,19 @@ namespace Pizza
     class PizzaBase
     {
     public:
-        std::string getDescription() const
+        
+        
+        virtual std::string getDescription() const
         {
             return std::string("Pizza");
         }
         
-        double getCost() const
+        virtual double getCost() const
         {
             return 3.0;
         }
+        
+        virtual ~PizzaBase(){};
     };
 }
 
