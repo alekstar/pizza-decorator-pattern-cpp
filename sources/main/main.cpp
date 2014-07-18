@@ -1,6 +1,7 @@
 #include "PizzaBase.h"
 #include "Cheese.h"
 #include "Tomato.h"
+#include "Chicken.h"
 #include <vector>
 #include <memory>
 #include <iostream>
@@ -21,6 +22,18 @@ int main()
         new Pizza::Cheese(std::shared_ptr<Pizza::Tomato>(
         new Pizza::Tomato(PointerToPizza(new Pizza::PizzaBase)))));
     pizzas.push_back(pizza_with_cheese_and_tomato);
+    
+    std::shared_ptr<Pizza::Cheese> pizza_with_cheese_and_chicken(
+        new Pizza::Cheese(std::shared_ptr<Pizza::Chicken>(
+        new Pizza::Chicken(PointerToPizza(new Pizza::PizzaBase)))));
+    pizzas.push_back(pizza_with_cheese_and_chicken);
+    
+    std::shared_ptr<Pizza::Cheese> pizza_with_double_cheese_tomato_and_chicken(
+        new Pizza::Cheese(std::shared_ptr<Pizza::Cheese>(
+        new Pizza::Cheese(std::shared_ptr<Pizza::Tomato>(
+        new Pizza::Tomato(std::shared_ptr<Pizza::Chicken>(
+        new Pizza::Chicken(PointerToPizza(new Pizza::PizzaBase)))))))));
+    pizzas.push_back(pizza_with_double_cheese_tomato_and_chicken);
     
     for(VectorOfPizzas::iterator pizza_iterator = pizzas.begin();
         pizza_iterator != pizzas.end();
